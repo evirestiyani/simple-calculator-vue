@@ -9,7 +9,6 @@
 
         <div class="header">
             <h2>Calculator</h2>
-            <div class="indicator"></div>
         </div>
         
         <!-- Display Screen -->
@@ -454,9 +453,6 @@ export default {
   color: #ffffff;
 }
 
-.dark .indicator {
-  background: #64ffda;
-}
 
 .dark .display {
   background: linear-gradient(135deg, 

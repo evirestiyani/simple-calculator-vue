@@ -1,94 +1,93 @@
 <template>
-    <!-- Theme Toggle -->
-    <div class="theme-toggle">
-      <button @click="toggleTheme" class="toggle-btn">
-        <span class="toggle-icon">{{ currentTheme === 'dark' ? '🌙' : '✨' }}</span>
-        {{ currentTheme === 'dark' ? 'Dark Mode' : 'Light Mode' }}
-      </button>
-    </div>
-
     <div :class="['kalkulator', currentTheme]">
-      <div class="header">
-        <h2>Calculator</h2>
-        <div class="indicator"></div>
-      </div>
-      
-      <!-- Display Screen -->
-      <div class="display">
-        <div class="expression">{{ expression || '0' }}</div>
-        <div class="input-display">{{ inputDisplay || '0' }}</div>
-        <div class="result-display">{{ result }}</div>
-      </div>
+        <!-- Theme Toggle - Icon Only -->
+        <div class="theme-toggle">
+            <button @click="toggleTheme" class="toggle-btn">
+                <span class="toggle-icon">{{ currentTheme === 'dark' ? '☀️' : '🌙' }}</span>
+            </button>
+        </div>
 
-      <!-- Button Grid -->
-      <div class="button-grid">
-        <!-- Row 1: Clear, Delete, Operations -->
-        <button @click="clear" class="btn btn-function btn-clear">
-          <span>AC</span>
-        </button>
-        <button @click="deleteLast" class="btn btn-function">
-          <span>⌫</span>
-        </button>
-        <button @click="addOperator('%')" class="btn btn-function">
-          <span>%</span>
-        </button>
-        <button @click="addOperator('/')" class="btn btn-operator">
-          <span>÷</span>
-        </button>
+        <div class="header">
+            <h2>Calculator</h2>
+            <div class="indicator"></div>
+        </div>
+        
+        <!-- Display Screen -->
+        <div class="display">
+            <div class="expression">{{ expression || '0' }}</div>
+            <div class="input-display">{{ inputDisplay || '0' }}</div>
+            <div class="result-display">{{ result }}</div>
+        </div>
 
-        <!-- Row 2: Numbers 7,8,9 and multiply -->
-        <button @click="addNumber('7')" class="btn btn-number">
-          <span>7</span>
-        </button>
-        <button @click="addNumber('8')" class="btn btn-number">
-          <span>8</span>
-        </button>
-        <button @click="addNumber('9')" class="btn btn-number">
-          <span>9</span>
-        </button>
-        <button @click="addOperator('*')" class="btn btn-operator">
-          <span>×</span>
-        </button>
+        <!-- Button Grid -->
+        <div class="button-grid">
+            <!-- Row 1: Clear, Delete, Operations -->
+            <button @click="clear" class="btn btn-function btn-clear">
+                <span>AC</span>
+            </button>
+            <button @click="deleteLast" class="btn btn-function">
+                <span>⌫</span>
+            </button>
+            <button @click="addOperator('%')" class="btn btn-function">
+                <span>%</span>
+            </button>
+            <button @click="addOperator('/')" class="btn btn-operator">
+                <span>÷</span>
+            </button>
 
-        <!-- Row 3: Numbers 4,5,6 and subtract -->
-        <button @click="addNumber('4')" class="btn btn-number">
-          <span>4</span>
-        </button>
-        <button @click="addNumber('5')" class="btn btn-number">
-          <span>5</span>
-        </button>
-        <button @click="addNumber('6')" class="btn btn-number">
-          <span>6</span>
-        </button>
-        <button @click="addOperator('-')" class="btn btn-operator">
-          <span>−</span>
-        </button>
+            <!-- Row 2: Numbers 7,8,9 and multiply -->
+            <button @click="addNumber('7')" class="btn btn-number">
+                <span>7</span>
+            </button>
+            <button @click="addNumber('8')" class="btn btn-number">
+                <span>8</span>
+            </button>
+            <button @click="addNumber('9')" class="btn btn-number">
+                <span>9</span>
+            </button>
+            <button @click="addOperator('*')" class="btn btn-operator">
+                <span>×</span>
+            </button>
 
-        <!-- Row 4: Numbers 1,2,3 and add -->
-        <button @click="addNumber('1')" class="btn btn-number">
-          <span>1</span>
-        </button>
-        <button @click="addNumber('2')" class="btn btn-number">
-          <span>2</span>
-        </button>
-        <button @click="addNumber('3')" class="btn btn-number">
-          <span>3</span>
-        </button>
-        <button @click="addOperator('+')" class="btn btn-operator">
-          <span>+</span>
-        </button>
+            <!-- Row 3: Numbers 4,5,6 and subtract -->
+            <button @click="addNumber('4')" class="btn btn-number">
+                <span>4</span>
+            </button>
+            <button @click="addNumber('5')" class="btn btn-number">
+                <span>5</span>
+            </button>
+            <button @click="addNumber('6')" class="btn btn-number">
+                <span>6</span>
+            </button>
+            <button @click="addOperator('-')" class="btn btn-operator">
+                <span>−</span>
+            </button>
 
-        <!-- Row 5: 0, decimal, equals -->
-        <button @click="addNumber('0')" class="btn btn-number btn-zero">
-          <span>0</span>
-        </button>
-        <button @click="addDecimal" class="btn btn-number">
-          <span>.</span>
-        </button>
-        <button @click="calculate" class="btn btn-equals">
-          <span>=</span>
-        </button>
-      </div>
+            <!-- Row 4: Numbers 1,2,3 and add -->
+            <button @click="addNumber('1')" class="btn btn-number">
+                <span>1</span>
+            </button>
+            <button @click="addNumber('2')" class="btn btn-number">
+                <span>2</span>
+            </button>
+            <button @click="addNumber('3')" class="btn btn-number">
+                <span>3</span>
+            </button>
+            <button @click="addOperator('+')" class="btn btn-operator">
+                <span>+</span>
+            </button>
+
+            <!-- Row 5: 0, decimal, equals -->
+            <button @click="addNumber('0')" class="btn btn-number btn-zero">
+                <span>0</span>
+            </button>
+            <button @click="addDecimal" class="btn btn-number">
+                <span>.</span>
+            </button>
+            <button @click="calculate" class="btn btn-equals">
+                <span>=</span>
+            </button>
+        </div>
     </div>
 </template>
 
@@ -256,36 +255,47 @@ export default {
   pointer-events: none;
 }
 
+/* Theme Toggle - Positioned at top right */
 .theme-toggle {
-  margin-bottom: 30px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
   z-index: 10;
 }
 
 .toggle-btn {
-  padding: 12px 24px;
+  width: 50px;
+  height: 50px;
   border: none;
-  border-radius: 50px;
+  border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
-  color: white;
   cursor: pointer;
   backdrop-filter: blur(20px);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 14px;
-  font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .toggle-btn:hover {
   background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-btn:active {
+  transform: translateY(-1px) scale(0.98);
 }
 
 .toggle-icon {
-  font-size: 16px;
+  font-size: 22px;
+  transition: transform 0.3s ease;
+}
+
+.toggle-btn:hover .toggle-icon {
+  transform: rotate(15deg);
 }
 
 /* CALCULATOR BASE */
@@ -432,6 +442,14 @@ export default {
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
+.dark .toggle-btn {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark .toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
 .dark .header h2 {
   color: #ffffff;
 }
@@ -518,19 +536,26 @@ export default {
   box-shadow: 0 12px 25px rgba(102, 187, 106, 0.4);
 }
 
-/* PREMIUM THEME */
+/* PREMIUM THEME (Light Mode) */
 .kalkulator.premium {
   background: linear-gradient(135deg, 
     rgba(255, 255, 255, 0.9) 0%, 
-    rgba(93, 93, 93, 0.9) 100%);
+    rgba(248, 248, 248, 0.9) 100%);
   box-shadow: 
-    0 30px 60px rgba(0, 0, 0, 0.7),
+    0 30px 60px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 rgba(218, 165, 32, 0.2);
 }
 
+.premium .toggle-btn {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.premium .toggle-btn:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+
 .premium .header h2 {
-  color: #daa520;
-  text-shadow: 0 0 20px rgba(218, 165, 32, 0.5);
+  color: #333;
 }
 
 .premium .indicator {
@@ -539,85 +564,93 @@ export default {
 
 .premium .display {
   background: linear-gradient(135deg, 
-    rgba(203, 203, 203, 0.9) 0%, 
-    rgba(255, 255, 255, 0.9) 100%);
-  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.7);
-  border: 1px solid rgba(218, 165, 32, 0.3);
+    rgba(255, 255, 255, 0.9) 0%, 
+    rgba(248, 248, 248, 0.9) 100%);
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .premium .expression {
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .premium .input-display {
-  color:rgb(14, 14, 14);
+  color: #333;
 }
 
 .premium .result-display {
-  color: #ffd700;
+  color: #f39c12;
 }
 
 .premium .btn-number {
-  background: linear-gradient(135deg, #ffffff 0%, #f1f1f1 100%);
-  color: #444;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  color: #333;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ddd;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .premium .btn-number:hover {
-  background: linear-gradient(135deg, #fafafa 0%, #e0e0e0 100%);
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   transform: translateY(-2px);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-  border: 1px solid #ccc;
 }
 
 .premium .btn-operator {
-  background: #e0e7ff;
-  color: #222;
-  box-shadow: 0 4px 12px rgba(200, 200, 200, 0.4);
-  border: 1px solid #e0e0e0;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
 }
 
 .premium .btn-operator:hover {
-  background: #c7d2fe;
+  background: linear-gradient(135deg, #5dade2, #3498db);
   transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(170, 170, 170, 0.5);
+  box-shadow: 0 8px 18px rgba(52, 152, 219, 0.4);
 }
 
 .premium .btn-function {
-  background: #fef3c7;
-  color: #222;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border: 1px solid #fde68a;
+  background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+  color: white;
+  box-shadow: 0 4px 12px rgba(149, 165, 166, 0.3);
 }
 
 .premium .btn-function:hover {
-  background: linear-gradient(135deg, #ffffff 0%, #d4d4d4 100%);
+  background: linear-gradient(135deg, #bdc3c7, #95a5a6);
   transform: translateY(-2px);
 }
 
 .premium .btn-clear {
-  background:rgb(241, 169, 169);
-  color: #fff;
-  border: none;
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
 }
 
 .premium .btn-equals {
-  background: #bbf7d0;
-  color: #333;
-  box-shadow: 0 4px 12px rgba(218, 165, 32, 0.3);
-  border: 1px solid #f5deb3;
-  font-weight: 600;
+  background: linear-gradient(135deg, #27ae60, #229954);
+  color: white;
+  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
 }
 
 .premium .btn-equals:hover {
-  background:rgb(73, 128, 85);
+  background: linear-gradient(135deg, #58d68d, #27ae60);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(218, 165, 32, 0.4);
+  box-shadow: 0 8px 20px rgba(39, 174, 96, 0.4);
 }
 
 /* RESPONSIVE */
 @media (max-width: 480px) {
+  .theme-toggle {
+    top: 15px;
+    right: 15px;
+  }
+  
+  .toggle-btn {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .toggle-icon {
+    font-size: 20px;
+  }
+
   .kalkulator {
     width: 95%;
     max-width: 320px;
@@ -648,6 +681,15 @@ export default {
 }
 
 @media (max-width: 360px) {
+  .toggle-btn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .toggle-icon {
+    font-size: 18px;
+  }
+
   .kalkulator {
     padding: 15px;
   }
